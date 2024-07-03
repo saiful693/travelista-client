@@ -23,7 +23,7 @@ const Login = () => {
         logIn(email, password)
             .then(() => {
                 toast.success("User login successfully!");
-                // navigate(location?.state ? location.state : '/')
+                navigate(location?.state ? location.state : '/')
             })
             .catch((error) => {
                 toast.error('Error login user: ' + error.message);

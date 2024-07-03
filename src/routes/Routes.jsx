@@ -7,6 +7,9 @@ import Register from "../shared/Register";
 import AddSpots from "../pages/AddSpots";
 import PrivateRoute from "./PrivateRoute";
 import SpotDetails from "../pages/SpotDetails";
+import AllTouristsSpot from "../pages/AllTouristsSpot";
+import MyList from "../pages/Home/MyList";
+import UpdateSpot from "../pages/UpdateSpot";
 
 
   const router = createBrowserRouter([
@@ -30,14 +33,33 @@ import SpotDetails from "../pages/SpotDetails";
         },
         {
             path: '/add-tourists-spot',
-            element: <PrivateRoute><AddSpots></AddSpots></PrivateRoute>
+            element: <PrivateRoute><AddSpots></AddSpots></PrivateRoute>,
+            loader: () =>fetch('http://localhost:5000/user')
 
+        },
+        {
+          path:'/all-tourists-spot',
+          element: <AllTouristsSpot></AllTouristsSpot>,
+          loader: () =>fetch('http://localhost:5000/spot')
         },
         {
           path: '/spot/:id',
           element: <PrivateRoute><SpotDetails></SpotDetails></PrivateRoute>,
           loader: ({ params }) =>fetch(`http://localhost:5000/spot/${params.id}`)
+        },
+        {
+          path:'/my-list',
+          element: <PrivateRoute><MyList></MyList></PrivateRoute>,
+          loader: () =>fetch('http://localhost:5000/spot'),
+        },
+        {
+          
+            path: '/updateSpot/:id',
+            element: <PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
+            loader: ({ params }) =>fetch(`http://localhost:5000/spot/${params.id}`)
+          
         }
+        
       ]
     },
   ]);

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const TouristsSpots = ({spot}) => {
+
+    
+
+
     const {_id,image,tourists_spot_name, country_name, location,short_description,average_cost,seasonality, travel_time,totalVisitorsPerYear,user_email,user_name}=spot;
     return (
         <div className="card bg-white shadow-xl">

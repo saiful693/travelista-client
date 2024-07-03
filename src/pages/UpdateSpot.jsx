@@ -1,29 +1,14 @@
-import { useContext } from 'react';
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2'
-import { AuthContext } from '../providers/AuthProvider';
-const AddSpots = () => {
 
-    const navigate = useNavigate();
-    const location1 = useLocation();
+const UpdateSpot = () => {
 
-    const {user}=useContext(AuthContext)
-    console.log(user);
-    // const {email,displayName,photoURL}=user;
+    const spot=useLoaderData();
+    const { _id, image, tourists_spot_name, country_name, location,short_description,average_cost,seasonality, travel_time,totalVisitorsPerYear,user_email,user_name} =spot
 
-    const users=useLoaderData();
-    // const {user_name,user_email}=users;
-
-    const loadedUser = users.find(u => u.user_email === user.email);
-    const {user_email,user_name, photo}=loadedUser;
-
-        user.email=user_email;
-        user.displayName=user_name;
-        user.photoURL=photo;
-
-    const handleSubmit = (e) => {
+    const handleUpdateSpot=e =>{
         e.preventDefault();
-        const form=e.target;
+        const form=event.target;
         const image=form.image.value;
         const tourists_spot_name=form.tourists_spot_name.value;
         const country_name=form.country_name.value;
@@ -36,43 +21,40 @@ const AddSpots = () => {
         const user_email=form.user_email.value;
         const user_name=form.user_name.value;
 
-        const newSpot={ image:image, tourists_spot_name:tourists_spot_name, country_name:country_name, location:location,short_description:short_description,average_cost:average_cost,seasonality:seasonality, travel_time:travel_time,totalVisitorsPerYear:totalVisitorsPerYear,user_email:user_email,user_name:user_name}
-        console.log(newSpot);
-
-        // send data to the server
-        fetch('http://localhost:5000/spot',{
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
+        const updateSpot={ image, tourists_spot_name, country_name, location,short_description,average_cost,seasonality, travel_time,totalVisitorsPerYear,user_email,user_name}
+        fetch(`http://localhost:5000/spot/${_id}`,{
+            method: 'PUT',
+            headers:{
+                'content-type' : 'application/json'
             },
-            body: JSON.stringify(newSpot)
+            body: JSON.stringify(updateSpot)
         })
-        .then(res => res.json())
+        .then(res =>res.json())
         .then(data =>{
-            console.log(data);
-            if(data.insertedId){
+            if(data.modifiedCount > 0){
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Spot added successfully',
+                    text: 'Spot Updated successfully',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                   })
             }
+
         })
-        navigate(location1?.state ? location1.state : '/')
     }
 
     return (
         <div className="flex items-center justify-center mt-10">
             <div className="w-full max-w-3xl p-8 space-y-3 bg-white rounded-lg shadow-md">
-                <h2 className="text-2xl  font-bold text-center">Add Tourist Spot</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <h2 className="text-2xl  font-bold text-center">Update Tourist Spot</h2>
+                <form onSubmit={handleUpdateSpot} className="space-y-4">
                     <div className="flex justify-center gap-10">
                         <div>
                             <label className="block mb-1 text-sm font-medium">Image URL</label>
                             <input
                                 type="url"
                                 id="image"
+                                defaultValue={image}
                                 name="image"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -83,6 +65,7 @@ const AddSpots = () => {
                             <input
                                 type="text"
                                 id="tourists_spot_name"
+                                defaultValue={tourists_spot_name}
                                 name="tourists_spot_name"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -95,6 +78,7 @@ const AddSpots = () => {
                             <input
                                 type="text"
                                 id="country_name"
+                                defaultValue={country_name}
                                 name="country_name"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -105,6 +89,7 @@ const AddSpots = () => {
                             <input
                                 type="text"
                                 id="location"
+                                defaultValue={location}
                                 name="location"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -116,6 +101,7 @@ const AddSpots = () => {
                             <label className="block mb-1 text-sm font-medium">Short Description</label>
                             <textarea
                                 id="short_description"
+                                defaultValue={short_description}
                                 name="short_description"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -128,6 +114,7 @@ const AddSpots = () => {
                             <input
                                 type="number"
                                 id="average_cost"
+                                defaultValue={average_cost}
                                 name="average_cost"
                                 className="w-full text-white  px-3 py-2 border rounded-md"
                                 required
@@ -138,6 +125,7 @@ const AddSpots = () => {
                             <input
                                 type="text"
                                 id="seasonality"
+                                defaultValue={seasonality}
                                 name="seasonality"
                                 className="w-full text-white  px-3 py-2 border rounded-md"
                                 required
@@ -150,6 +138,7 @@ const AddSpots = () => {
                             <input
                                 type="text"
                                 id="travel_time"
+                                defaultValue={travel_time}
                                 name="travel_time"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -160,6 +149,7 @@ const AddSpots = () => {
                             <input
                                 type="number"
                                 id="totalVisitorsPerYear"
+                                defaultValue={totalVisitorsPerYear}
                                 name="totalVisitorsPerYear"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -172,7 +162,7 @@ const AddSpots = () => {
                             <input
                                 type="email"
                                 id="user_email"
-                                defaultValue={user_email}
+                                value={user_email}
                                 name="user_email"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -183,7 +173,7 @@ const AddSpots = () => {
                             <input
                                 type="text"
                                 id="user_name"
-                                defaultValue={user_name}
+                                value={user_name}
                                 name="user_name"
                                 className="w-full text-white px-3 py-2 border rounded-md"
                                 required
@@ -191,7 +181,7 @@ const AddSpots = () => {
                         </div>
                     </div>
                     <div className="flex justify-center px-10">
-                    <button type="submit" className="w-3/4  px-4 py-2 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600">Add</button>
+                    <button type="submit" className="w-3/4  px-4 py-2 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600">Update</button>
                     </div>
                 </form>
             </div>
@@ -199,4 +189,4 @@ const AddSpots = () => {
     );
 };
 
-export default AddSpots;
+export default UpdateSpot;

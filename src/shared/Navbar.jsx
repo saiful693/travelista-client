@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,11 +10,15 @@ import { Tooltip } from 'react-tooltip'
 const Navbar = () => {
 
     const {user, logOut}=useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
     
     const handleLogOut = () => {
         logOut()
         .then(()=>{
             toast.success("User LogOut successfully!");
+            navigate(location?.state ? location.state : '/')
+
         })
         .catch(()=>{
             toast.error("Error in user LogOut: ");
