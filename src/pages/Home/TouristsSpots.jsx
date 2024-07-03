@@ -19,7 +19,7 @@ const TouristsSpots = ({ spot }) => {
 
 
                 <div className="card-actions justify-end">
-                    <Link to={`/spot/${_id}`} className="btn btn-primary">View Property</Link>
+                    <Link to={`/spot/${_id}`} className="btn btn-primary">View Details</Link>
                 </div>
             </div>
         </div>

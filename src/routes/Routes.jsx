@@ -11,6 +11,7 @@ import AllTouristsSpot from "../pages/AllTouristsSpot";
 import MyList from "../pages/Home/MyList";
 import UpdateSpot from "../pages/UpdateSpot";
 import AddCountries from "../pages/AddCountries";
+import SpcificCountry from "../pages/SpcificCountry";
 
 
 
@@ -63,12 +64,12 @@ import AddCountries from "../pages/AddCountries";
           path: '/add-countries',
           element: <AddCountries></AddCountries>
         },
-        // {
-        //   path: '/countries',
-        //   element: <Countries></Countries>,
-        //   loader: () =>fetch('http://localhost:5000/user')
-        // }
-        
+        {
+          path: '/country/:id',
+          element: <SpcificCountry></SpcificCountry> ,
+          loader: ({ params }) =>fetch(`http://localhost:5000/country/${params.id}`)
+        },
+      
       ]
     },
   ]);
