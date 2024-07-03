@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import TouristsSpots from "./TouristsSpots";
 import ChooseUs from "./ChooseUs";
+import Countries from "./Countries";
 
 
 const Home = () => {
@@ -23,7 +24,7 @@ const Home = () => {
                 </div>
             </div>
             <ChooseUs></ChooseUs>
-
+            <Countries></Countries>     
         </div>
     );
 };
