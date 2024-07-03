@@ -13,6 +13,7 @@ import UpdateSpot from "../pages/UpdateSpot";
 import AddCountries from "../pages/AddCountries";
 
 
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -23,6 +24,7 @@ import AddCountries from "../pages/AddCountries";
             path: '/',
             element: <Home></Home>,
             loader: () =>fetch('http://localhost:5000/spot')
+           
         },
         {
             path: '/login',
@@ -36,7 +38,6 @@ import AddCountries from "../pages/AddCountries";
             path: '/add-tourists-spot',
             element: <PrivateRoute><AddSpots></AddSpots></PrivateRoute>,
             loader: () =>fetch('http://localhost:5000/user')
-
         },
         {
           path:'/all-tourists-spot',
@@ -61,7 +62,12 @@ import AddCountries from "../pages/AddCountries";
         {
           path: '/add-countries',
           element: <AddCountries></AddCountries>
-        }
+        },
+        // {
+        //   path: '/countries',
+        //   element: <Countries></Countries>,
+        //   loader: () =>fetch('http://localhost:5000/user')
+        // }
         
       ]
     },

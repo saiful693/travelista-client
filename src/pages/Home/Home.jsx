@@ -5,12 +5,10 @@ import ChooseUs from "./ChooseUs";
 import Countries from "./Countries";
 
 
+
 const Home = () => {
 
     const loadedSpots = useLoaderData();
-
-
-
     return (
         <div>
             <Banner></Banner>
@@ -24,7 +22,7 @@ const Home = () => {
                 </div>
             </div>
             <ChooseUs></ChooseUs>
-            <Countries></Countries>     
+            <Countries></Countries>
         </div>
     );
 };
