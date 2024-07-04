@@ -5,7 +5,7 @@ const Country = ({country}) => {
     const {_id,image,country_name,short_description}=country
     return (
         <Link to={`/country/${_id}`}>
-            <div className="card bg-white shadow-xl">
+            <div className="card h-[500px] bg-white shadow-xl">
             <figure><img src={image} alt="" className="w-full h-52 object-cover" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{country_name}</h2>  

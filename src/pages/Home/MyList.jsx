@@ -57,8 +57,8 @@ const MyList = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Country</th>
-                            <th>Average Cost</th>
-                            <th>Travel Time</th>
+                            <th className="hidden md:table-cell">Average Cost</th>
+                            <th className="hidden md:table-cell">Travel Time</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -69,11 +69,11 @@ const MyList = () => {
                                 <th>{count++}</th>
                                 <td>{spot.tourists_spot_name}</td>
                                 <td>{spot.country_name}</td>
-                                <td>{spot.average_cost}</td>
-                                <td>{spot.travel_time}</td>
+                                <td className="hidden md:table-cell">{spot.average_cost}</td>
+                                <td className="hidden md:table-cell">{spot.travel_time}</td>
                                 <td>
                                     <Link to={`/updateSpot/${spot._id}`}>
-                                        <button className="btn btn-success mr-2">Update</button>
+                                        <button className="btn btn-success mb-2 md:mr-2">Update</button>
                                     </Link>
                                     <button onClick={() => handleDelete(spot._id)} className="btn btn-warning">X</button>
                                 </td>

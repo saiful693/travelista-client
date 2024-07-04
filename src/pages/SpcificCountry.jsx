@@ -18,7 +18,7 @@ const SpcificCountry = () => {
     const loadedSpots = countries.filter(u => u.country_name === country_name);
     
     return (
-        <div className="grid grid-cols-3 gap-4 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
             {
                 loadedSpots.map(spot => <TouristsSpots key={spot._id} spot={spot}></TouristsSpots>)
             }

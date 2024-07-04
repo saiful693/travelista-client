@@ -41,7 +41,7 @@ const AllTouristsSpot = () => {
                         <option value="desc">Descending</option>
                     </select>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {
                         sortedSpots.map(spot => <TouristsSpots key={spot._id} spot={spot}></TouristsSpots>)
                     }
