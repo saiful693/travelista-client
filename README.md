@@ -1,8 +1,13 @@
-# React + Vite
+B9A10Type-01 Requirements
+--------------------------
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+website name-----Travelista
+live site URL-
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+selected category- Southeast Asia
+Feature
+    -This is a Tourism Management Website
+    -User can find several Tourist spot
+    -Admin or manager can add tourist spot, also can update or delete spot
+    -For taking the service user have to register and login fast
+    -User can find country wise tourist spots
