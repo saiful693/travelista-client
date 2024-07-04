@@ -40,7 +40,7 @@ const AddSpots = () => {
         console.log(newSpot);
 
         // send data to the server
-        fetch('http://localhost:5000/spot',{
+        fetch('https://travelista-server.vercel.app/spot',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

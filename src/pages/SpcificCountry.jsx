@@ -10,7 +10,7 @@ const SpcificCountry = () => {
     const [countries,setCountries]=useState([]);
 
     useEffect(() =>{
-        fetch('http://localhost:5000/spot')
+        fetch('https://travelista-server.vercel.app/spot')
         .then(res => res.json())
         .then(data => setCountries(data))
     },[])

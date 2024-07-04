@@ -24,7 +24,7 @@ import SpcificCountry from "../pages/SpcificCountry";
         {
             path: '/',
             element: <Home></Home>,
-            loader: () =>fetch('http://localhost:5000/spot')
+            loader: () =>fetch('https://travelista-server.vercel.app/spot')
            
         },
         {
@@ -38,27 +38,27 @@ import SpcificCountry from "../pages/SpcificCountry";
         {
             path: '/add-tourists-spot',
             element: <PrivateRoute><AddSpots></AddSpots></PrivateRoute>,
-            loader: () =>fetch('http://localhost:5000/user')
+            loader: () =>fetch('https://travelista-server.vercel.app/user')
         },
         {
           path:'/all-tourists-spot',
           element: <AllTouristsSpot></AllTouristsSpot>,
-          loader: () =>fetch('http://localhost:5000/spot')
+          loader: () =>fetch('https://travelista-server.vercel.app/spot')
         },
         {
           path: '/spot/:id',
           element: <PrivateRoute><SpotDetails></SpotDetails></PrivateRoute>,
-          loader: ({ params }) =>fetch(`http://localhost:5000/spot/${params.id}`)
+          loader: ({ params }) =>fetch(`https://travelista-server.vercel.app/spot/${params.id}`)
         },
         {
           path:'/my-list',
           element: <PrivateRoute><MyList></MyList></PrivateRoute>,
-          loader: () =>fetch('http://localhost:5000/spot'),
+          loader: () =>fetch('https://travelista-server.vercel.app/spot'),
         },
         {
             path: '/updateSpot/:id',
             element: <PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
-            loader: ({ params }) =>fetch(`http://localhost:5000/spot/${params.id}`)
+            loader: ({ params }) =>fetch(`https://travelista-server.vercel.app/spot/${params.id}`)
         },
         {
           path: '/add-countries',
@@ -67,7 +67,7 @@ import SpcificCountry from "../pages/SpcificCountry";
         {
           path: '/country/:id',
           element: <SpcificCountry></SpcificCountry> ,
-          loader: ({ params }) =>fetch(`http://localhost:5000/country/${params.id}`)
+          loader: ({ params }) =>fetch(`https://travelista-server.vercel.app/country/${params.id}`)
         },
       
       ]

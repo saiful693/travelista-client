@@ -39,7 +39,7 @@ const Register = () => {
                 const user={ user_name:name, user_email:email, photo}
                 toast.success("User registered successfully!");
                 // send data to the server
-                fetch('http://localhost:5000/user', {
+                fetch('https://travelista-server.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

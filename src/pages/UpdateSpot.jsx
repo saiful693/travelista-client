@@ -22,7 +22,7 @@ const UpdateSpot = () => {
         const user_name=form.user_name.value;
 
         const updateSpot={ image, tourists_spot_name, country_name, location,short_description,average_cost,seasonality, travel_time,totalVisitorsPerYear,user_email,user_name}
-        fetch(`http://localhost:5000/spot/${_id}`,{
+        fetch(`https://travelista-server.vercel.app/spot/${_id}`,{
             method: 'PUT',
             headers:{
                 'content-type' : 'application/json'
